@@ -1,3 +1,4 @@
+require("pg")
 class Bounty
 
   attr_accessor :name, :favourite_weapon, :danger_level, :bounty_value
