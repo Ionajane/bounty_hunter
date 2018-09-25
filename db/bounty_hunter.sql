@@ -5,5 +5,5 @@ CREATE TABLE criminals (
   name              VARCHAR(255),
   favourite_weapon  VARCHAR(255),
   danger_level      VARCHAR(255),
-  bounty_value      INT8
+  bounty_value      INT4
 );

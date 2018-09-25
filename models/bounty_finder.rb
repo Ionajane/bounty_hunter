@@ -18,7 +18,7 @@ class Bounty
     host: "localhost" })
 
       sql = "
-        INSERT INTO bounty_finder(
+        INSERT INTO criminals(
           name,
           favourite_weapon,
           danger_level,
@@ -42,10 +42,10 @@ class Bounty
     dbname: "bounty_hunter",
     host: "localhost" })
 
-  sql = "SELECT * FROM bounty_finder;"
+  sql = "SELECT * FROM criminals;"
   db.prepare("all", sql)
 
-  
+
   end
 
   def update()
@@ -54,7 +54,7 @@ class Bounty
     host: "localhost" })
 
     sql = "
-    UPDATE bounty_finder
+    UPDATE criminals
     SET (
       name,
       favourite_weapon,
