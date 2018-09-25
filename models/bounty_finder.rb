@@ -25,27 +25,22 @@ class Bounty
           bounty_value
         )
         VALUES ($1, $2, $3, $4)
-        RETURNING id;
-      "
+        RETURNING id;"
+
+        values = [@name, @favourite_weapon, @danger_level, @bounty_value]
+
       db.prepare("save", sql)
-      db.exec_prepared("save", [
-          @name,
-          @favourite_weapon,
-          @danger_level,
-          @bounty_value
-        ])
+      id = db.exec_prepared("save", values) [0] ["id"].to_i
       db.close()
   end
 
   def self.delete_all()
-    db = PG.connect ({
-    dbname: "bounty_hunter",
-    host: "localhost" })
+      db = PG.connect ({
+      dbname: "bounty_hunter",
+      host: "localhost" })
 
-  sql = "SELECT * FROM criminals;"
-  db.prepare("all", sql)
-
-
+      sql = "SELECT * FROM criminals;"
+      db.prepare("all", sql)
   end
 
   def update()
@@ -60,8 +55,8 @@ class Bounty
       favourite_weapon,
       danger_level,
       bounty_value
-    ) = ($1, $2, $3, $4) WHERE id = $5;
-    "
+    ) = ($1, $2, $3, $4)
+    WHERE id = $5;"
 
     values = [
       @name,
@@ -73,7 +68,6 @@ class Bounty
     db.prepare("update", sql)
     db.exec_prepared("update", values)
     db.close()
-
   end
 
 end

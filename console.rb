@@ -16,6 +16,7 @@ require("pry")
   })
 
 criminal1.save()
+criminal2.save()
 
 binding.pry
 nil
